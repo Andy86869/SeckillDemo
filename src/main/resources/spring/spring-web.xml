@@ -37,5 +37,5 @@
 	</bean>
 	
 	<!--4:扫描web 相关的bean -->
-	<context:component-scan base-package="org.seckill.web"/>
+	<context:component-scan base-package="org.seckill.controller"/>
 </beans>
