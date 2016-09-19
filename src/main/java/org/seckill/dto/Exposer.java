@@ -1,6 +1,7 @@
 package org.seckill.dto;
 
 /**
+ * DTO 包下 为web 与service 之间的数据传递
  * 暴露秒杀地址DTO
  * 
  * @author Andy

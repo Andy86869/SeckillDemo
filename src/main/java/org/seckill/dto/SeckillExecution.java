@@ -4,6 +4,7 @@ import org.seckill.entity.SuccessKilled;
 import org.seckill.enums.SeckillStatEnum;
 
 /**
+ * DTO 包下 为web 与service 之间的数据传递
  * 封装秒杀执行后的结果
  * 
  * @author Andy
