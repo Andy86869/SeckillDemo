@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  */
 @Controller
-@RequestMapping("/seckill") // url:/模块/资源/{id}/细分 /seckill/list
+//@RequestMapping("/seckill") // url:/模块/资源/{id}/细分 /seckill/list
 public class SeckillController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -63,7 +63,7 @@ public class SeckillController {
 	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST, produces = {
 			"application/json;charset=UTF-8" })
 	@ResponseBody // 将返回类型封装成json
-	public SeckillResult<Exposer> exposer(Long seckillId) {
+	public SeckillResult<Exposer> exposer(@PathVariable("seckillId") Long seckillId) {
 
 		SeckillResult<Exposer> result;
 		try {
@@ -79,7 +79,7 @@ public class SeckillController {
 
 	/**
 	 * 执行秒杀
-	 */
+	 */																		
 	@RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST, produces = {
 			"application/json;charset=UTF-8" })
 	@ResponseBody
@@ -95,19 +95,20 @@ public class SeckillController {
 			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (RepeatKillException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (SeckillCloseException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.END);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		}
 	}
 	
 	//获取系统时间
 	@RequestMapping(value = {"/time/now"},method = RequestMethod.GET)
+	@ResponseBody
 	public SeckillResult<Long> time(){
 		Date now =  new Date();
 		return new SeckillResult(true,now.getTime());
