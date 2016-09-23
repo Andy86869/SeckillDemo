@@ -1,6 +1,5 @@
 package org.seckill.enums;
 
-import java.util.Iterator;
 
 /**
  * 使用枚举表述常量数据字段
