@@ -69,7 +69,7 @@
 				seckillId:${seckill.seckillId},
 				startTime:${seckill.startTime.time},
 				endTime:${seckill.endTime.time}
-			})
+			});
 		});
 	</script>
 </html>

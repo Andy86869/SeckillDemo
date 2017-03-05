@@ -124,7 +124,7 @@ var seckill = {
 						//刷新页面
 						window.location.reload();
 					}else{
-						$('#killPhoneMessage').hide().html('<lable class="lable lable-danger">手机号有误</lable>').show(300);
+						$('#killPhoneMessage').hide().html('<lable class="label label-danger">手机号有误</lable>').show(300);
 					}
 				});
 			} 
